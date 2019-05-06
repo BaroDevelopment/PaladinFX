@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #36393E;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MessageController">
+   <children>
+      <JFXTextField id="textField" fx:id="guildID" focusColor="#3fe59a" labelFloat="true" layoutX="62.0" layoutY="42.0" promptText="Server ID" stylesheets="@../css/theme.css" unFocusColor="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField id="textField" fx:id="channelID" focusColor="#3fe59a" labelFloat="true" layoutX="317.0" layoutY="42.0" promptText="Channel ID" stylesheets="@../css/theme.css" unFocusColor="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextArea id="textField" fx:id="messageTextArea" focusColor="#3fe59a" layoutX="62.0" layoutY="108.0" prefHeight="210.0" prefWidth="464.0" promptText="Type your message here ..." stylesheets="@../css/theme.css" unFocusColor="WHITE" wrapText="true">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </JFXTextArea>
+      <JFXButton id="textField" fx:id="sendMessageButton" layoutX="216.0" layoutY="335.0" onAction="#sendMessage" prefHeight="41.0" prefWidth="155.0" ripplerFill="#3fe59a" style="-fx-border-color: #3fe59a;" text="Send" textFill="WHITE" wrapText="true">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>

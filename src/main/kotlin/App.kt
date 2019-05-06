@@ -9,7 +9,7 @@ class App : Application() {
 
     @Throws(Exception::class)
     override fun start(primaryStage: Stage?) {
-        val root = FXMLLoader.load<Parent>(javaClass.getResource("/fxml/sample.fxml"))
+        val root = FXMLLoader.load<Parent>(javaClass.getResource("/fxml/message.fxml"))
         val scene = Scene(root, 600.0, 400.0)
         primaryStage?.setTitle("Paladin GUI")
         primaryStage?.setScene(scene)
