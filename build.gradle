@@ -37,3 +37,25 @@ compileKotlin {
 compileTestKotlin {
     kotlinOptions.jvmTarget = "1.8"
 }
+
+compileJava {
+    options.encoding = "UTF-8"
+    options.incremental = true
+
+    options.compilerArgs.addAll([
+            "--add-exports",
+            "javafx.base/com.sun.javafx.event=ALL-UNNAMED"
+    ])
+    options.compilerArgs.addAll([
+            "--add-exports",
+            "javafx.controls/com.sun.javafx.scene.control.behavior=ALL-UNNAMED"
+    ])
+    options.compilerArgs.addAll([
+            "--add-exports",
+            "javafx.graphics/com.sun.javafx.scene.traversal=ALL-UNNAMED"
+    ])
+    options.compilerArgs.addAll([
+            "--add-exports",
+            "javafx.graphics/com.sun.javafx.util=ALL-UNNAMED"
+    ])
+}

@@ -37,14 +37,14 @@ public class JavaApp extends Application {
     public static final int NO_USERNAME_PASS_COMBO = 32;
 
     public static void main(String[] args) {
-        setupBot();
+//        setupBot();
         launch(args);
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/message.fxml"));
-        Scene scene = new Scene(root, 600, 600);
+        Scene scene = new Scene(root, 800, 800);
         primaryStage.setTitle("Discord Bot GUI");
         primaryStage.getIcons().add(new Image(JavaApp.class.getResourceAsStream("/images/DiscordLogo.png")));
         primaryStage.setScene(scene);
