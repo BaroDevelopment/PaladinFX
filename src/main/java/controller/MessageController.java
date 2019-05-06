@@ -30,9 +30,6 @@ public class MessageController {
 
     @FXML
     private void sendMessage(ActionEvent e){
-        System.out.println(guildID.getText());
-        System.out.println(channelID.getText());
-        System.out.println(messageTextArea.getText());
         JavaApp.api.getGuildById(guildID.getText()).getTextChannelById(channelID.getText()).sendMessage(messageTextArea.getText()).queue();
     }
 }
