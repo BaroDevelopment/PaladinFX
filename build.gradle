@@ -37,3 +37,11 @@ compileKotlin {
 compileTestKotlin {
     kotlinOptions.jvmTarget = "1.8"
 }
+
+
+jar {
+    manifest {
+        attributes 'Main-Class' : 'baro.core.JavaApp'
+    }
+}
+
