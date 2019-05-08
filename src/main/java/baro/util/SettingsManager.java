@@ -1,4 +1,4 @@
-package util; /**
+package baro.util; /**
  * Copyright 2015-2016 Austin Keener
  * <p>
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +16,7 @@ package util; /**
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import core.JavaApp;
+import baro.core.JavaApp;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

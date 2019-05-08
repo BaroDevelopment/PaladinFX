@@ -1,13 +1,42 @@
 * {
     -fx-primary: #36393E;
-    -fx-secondary: #FFFF8D;
-    /*-fx-secondary: #3fe59a;*/
+    /*-fx-secondary: #FFFF8D;*/
+    -fx-secondary: #3fe59a;
     -fx-primarytext: #B2B2B2;
     -fx-blue: #1976D2;
     -fx-red: #FF0000;
     -fx-dark: #2A2E37;
     -fx-color-1: #1976D2;
 }
+
+.list-view {
+    -fx-text-fill: -fx-primarytext;
+    -fx-background-color: -fx-dark;
+    -fx-font-size: 15px;
+}
+
+/*.list-view .list-cell:hover {*/
+    /*-fx-background-color: -fx-primary;*/
+    /*-fx-text-fill: -fx-primarytext;*/
+/*}*/
+
+.list-view .list-cell:selected {
+    -fx-background-color: -fx-primary;
+}
+
+.list-view .list-cell {
+    -fx-background-color: -fx-dark;
+    -fx-text-fill: white;
+}
+
+.list-view .label {
+    -fx-text-fill: white;
+}
+
+.jfx-rippler {
+    -jfx-rippler-fill: -fx-secondary;
+}
+
 
 .root {
     -fx-background-color: -fx-primary;

@@ -16,4 +16,4 @@ A JavaFX, Kotlin GUI for Discord Bots
 `--module-path "E:\Programme\Java\javafx-sdk-11.0.2\lib" --add-modules=javafx.controls,javafx.fxml`
 
 #### Program Arguments
-`--add-exports=javafx.graphics/com.sun.javafx.util=ALL-UNNAMED`
+`--add-exports=javafx.graphics/com.sun.javafx.baro.util=ALL-UNNAMED`

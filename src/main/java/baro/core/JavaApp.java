@@ -1,4 +1,4 @@
-package core;
+package baro.core;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -6,11 +6,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import baro.listener.EventListener;
 import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.JDABuilder;
-import util.Settings;
-import util.SettingsManager;
+import baro.util.Settings;
+import baro.util.SettingsManager;
 
 import javax.security.auth.login.LoginException;
 
@@ -44,10 +45,11 @@ public class JavaApp extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/message.fxml"));
-        Scene scene = new Scene(root, 800, 800);
-        primaryStage.setTitle("Discord Bot GUI");
+        Scene scene = new Scene(root, 900, 650);
+        primaryStage.setTitle("PaladinFX");
         primaryStage.getIcons().add(new Image(JavaApp.class.getResourceAsStream("/images/DiscordLogo.png")));
         primaryStage.setScene(scene);
+        primaryStage.setResizable(false);
         primaryStage.show();
     }
 
@@ -55,7 +57,9 @@ public class JavaApp extends Application {
         try {
             Settings settings = SettingsManager.getInstance().getSettings();
             JDABuilder jdaBuilder = new JDABuilder(AccountType.BOT).setToken(settings.getBotToken());
-            //Login to Discord now that we are all setup.
+
+            jdaBuilder.addEventListener(new EventListener());
+
             api = jdaBuilder.build().awaitReady();
         } catch (IllegalArgumentException e) {
             System.out.println("No login details provided! Please provide a botToken in the config.");
