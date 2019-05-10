@@ -2,12 +2,13 @@ plugins {
     id 'java'
     id 'application'
     id 'org.openjfx.javafxplugin' version '0.0.7'
-    id 'org.jetbrains.kotlin.jvm' version '1.3.0'
+    id 'org.beryx.jlink' version '2.10.2'
 }
 
-mainClassName = "baro.core.JavaApp"
+mainClassName = "$moduleName/baro.JavaApp"
 
 javafx {
+    version = "12"
     modules = ['javafx.controls', 'javafx.fxml']
 }
 
@@ -23,25 +24,19 @@ repositories {
 }
 
 dependencies {
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
-    compile 'com.jfoenix:jfoenix:9.0.8'
-    compile 'net.dv8tion:JDA:3.8.3_463'
-    compile 'com.google.code.gson:gson:2.8.1'
-    compile 'commons-io:commons-io:2.5'
+//    compile 'net.dv8tion:JDA:3.8.3_463'
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
 
-compileKotlin {
-    kotlinOptions.jvmTarget = "1.8"
-}
-compileTestKotlin {
-    kotlinOptions.jvmTarget = "1.8"
-}
-
-
 jar {
     manifest {
-        attributes 'Main-Class' : 'baro.core.JavaApp'
+        attributes 'Main-Class' : 'baro.JavaApp'
     }
 }
 
+jlink {
+    options = ['--strip-debug', '--compress', '2', '--no-header-files', '--no-man-pages']
+    launcher {
+        name = 'PaladinFX'
+    }
+}

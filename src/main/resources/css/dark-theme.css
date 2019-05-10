@@ -33,11 +33,6 @@
     -fx-text-fill: white;
 }
 
-.jfx-rippler {
-    -jfx-rippler-fill: -fx-secondary;
-}
-
-
 .root {
     -fx-background-color: -fx-primary;
 }
@@ -48,40 +43,44 @@
 
 .button {
     -fx-text-fill: -fx-primarytext;
-    -fx-background-color: -fx-primary;
-    -fx-border-color: -fx-secondary;
+    -fx-background-color: derive(-fx-primary, -30%);
+    -fx-border-color: -fx-primarytext;
     /*-fx-background-radius: 20px;*/
-    -fx-font-size: 12pt;
 }
 
-.button:hover, .button:focused {
+.button:hover {
     -fx-border-color: -fx-secondary;
-    -fx-background-color: -fx-secondary;
-    -fx-text-fill: -fx-primary;
 }
 
 .text-field {
+    -fx-prompt-text-fill: -fx-primarytext;
+    -fx-background-color: derive(-fx-primary, 0%);
     -fx-text-fill: -fx-primarytext;
     -fx-font-size: 12pt;
-    -jfx-focus-color: -fx-secondary;
-    -fx-prompt-text-fill: -fx-secondary;
-    -fx-text-fill: derive(-fx-secondary, 20%);
+    -fx-border-color: derive(-fx-primary, 60%);
+}
+
+.text-field:focused{
+    -fx-border-color: derive(-fx-secondary, 10%);
 }
 
 .text-area {
+    -fx-prompt-text-fill: -fx-primarytext;
     -fx-text-fill: -fx-primarytext;
+    -fx-background-color: derive(-fx-primary, 60%);
     -fx-font-size: 12pt;
-    -jfx-focus-color: -fx-secondary;
-    -fx-prompt-text-fill: -fx-secondary;
-    -fx-text-fill: derive(-fx-secondary, 20%);
 }
 
-/*Login Screen Specific*/
+.text-area:focused{
+    -fx-background-color: -fx-secondary;
+}
 
-
-.wrong-credentials {
-    -jfx-unfocus-color: #ef5350;
-    -jfx-focus-color: #ef5350;
+.text-area .content{
+    /*-fx-text-fill: -fx-primarytext;*/
+    /*-fx-background-color: derive(-fx-primary, 0%);*/
+    -fx-background-color: -fx-primary;
+    /*-fx-font-size: 12pt;*/
+    /*-fx-prompt-text-fill: -fx-secondary;*/
 }
 
 /*Main Screen CSS Styling starts here*/
@@ -137,16 +136,6 @@
     -fx-background-color: derive(-fx-primary, 20%);
 }
 
-/*Hamburger Styling*/
-.jfx-hamburger-icon {
-    -fx-spacing: 7;
-}
-
-.jfx-hamburger-icon StackPane {
-    -fx-background-color: -fx-secondary;
-    -fx-background-radius: 5px;
-}
-
 /*Toolbar buttons*/
 .toolbar-button {
     -fx-border-color: transparent;
@@ -187,10 +176,6 @@
     -fx-background-color: -fx-color-1;
     -fx-border-color: derive(-fx-color-1, -20%);
     -fx-text-fill: white;
-}
-
-.jfx-layout-actions {
-    -fx-hgap: 8;
 }
 
 /*Chart Styling*/
@@ -316,27 +301,6 @@
     -fx-base: -fx-primary;
 }
 
-
-/*JFXDialog styling*/
-.jfx-layout-heading {
-    -fx-background-color: -fx-color-1;
-}
-
-.jfx-layout-heading .label {
-    -fx-text-fill: white;
-    -fx-font-size: 12pt;
-}
-
-.jfx-layout-body, .jfx-layout-actions {
-    -fx-background-color: -fx-primary;
-}
-
-.jfx-layout-body .label {
-    -fx-text-fill: white;
-    -fx-padding: 20px 0 0 0;
-}
-
-
 /*Dashboard label*/
 .not-available {
     -fx-background-radius: 5px;
@@ -348,7 +312,6 @@
 
 .checkbox-main {
     -fx-text-fill: -fx-secondary;
-    -jfx-checked-color: -fx-primary;
     -fx-font-size: 10pt;
 }
 
