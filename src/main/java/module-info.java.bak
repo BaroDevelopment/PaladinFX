@@ -7,6 +7,10 @@
 module PaladinFX {
     requires javafx.controls;
     requires javafx.fxml;
+    requires JDA;
+    requires gson;
+    requires javafx.base;
+    requires javafx.graphics;
 
     opens baro.controller to javafx.fxml;
     exports baro;

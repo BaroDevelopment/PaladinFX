@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" stylesheets="@../css/dark-theme.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="baro.controller.MessageController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" stylesheets="@../css/dark-theme.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="baro.controller.MessageController">
    <center>
       <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
         <tabs>
@@ -22,10 +22,10 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TextField layoutX="169.0" layoutY="95.0" promptText="Server ID" />
-                        <TextField layoutX="426.0" layoutY="95.0" promptText="Channel ID" />
-                        <TextArea layoutX="170.0" layoutY="179.0" prefHeight="200.0" prefWidth="462.0" promptText="Message" />
-                        <Button layoutX="340.0" layoutY="419.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="122.0" text="Send" textAlignment="CENTER">
+                        <TextField fx:id="serverID" layoutX="169.0" layoutY="95.0" promptText="Server ID" />
+                        <TextField fx:id="channelID" layoutX="426.0" layoutY="95.0" promptText="Channel ID" />
+                        <TextArea fx:id="serverMessage" layoutX="170.0" layoutY="179.0" prefHeight="200.0" prefWidth="462.0" promptText="Message" />
+                        <Button layoutX="340.0" layoutY="419.0" mnemonicParsing="false" onAction="#sendServerMessage" prefHeight="47.0" prefWidth="122.0" text="Send" textAlignment="CENTER">
                            <font>
                               <Font name="Arial" size="15.0" />
                            </font></Button>
@@ -37,9 +37,9 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TextField layoutX="292.0" layoutY="51.0" promptText="User ID" />
-                        <TextArea layoutX="162.0" layoutY="121.0" prefHeight="218.0" prefWidth="473.0" promptText="Message" />
-                        <Button layoutX="332.0" layoutY="386.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="122.0" text="Send" textAlignment="CENTER">
+                        <TextField fx:id="userID" layoutX="292.0" layoutY="51.0" promptText="User ID" />
+                        <TextArea fx:id="userMessage" layoutX="162.0" layoutY="121.0" prefHeight="218.0" prefWidth="473.0" promptText="Message" />
+                        <Button layoutX="332.0" layoutY="386.0" mnemonicParsing="false" onAction="#sendUserMessage" prefHeight="47.0" prefWidth="122.0" text="Send" textAlignment="CENTER">
                            <font>
                               <Font name="Arial" size="15.0" />
                            </font>
@@ -52,7 +52,7 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <ListView layoutX="34.0" layoutY="86.0" prefHeight="429.0" prefWidth="824.0" />
+                        <ListView fx:id="dmHistory" layoutX="34.0" layoutY="86.0" prefHeight="429.0" prefWidth="824.0" />
                         <Label layoutX="357.0" layoutY="24.0" prefHeight="44.0" prefWidth="164.0" text="DM HISTORY" textFill="#ababab">
                            <font>
                               <Font size="18.0" />

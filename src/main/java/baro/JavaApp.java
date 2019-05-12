@@ -1,12 +1,18 @@
 package baro;
 
+import baro.util.Settings;
+import baro.util.SettingsManager;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-
 import javafx.stage.Stage;
+import net.dv8tion.jda.core.AccountType;
+import net.dv8tion.jda.core.JDA;
+import net.dv8tion.jda.core.JDABuilder;
+
+import javax.security.auth.login.LoginException;
 
 
 /**
@@ -16,35 +22,45 @@ import javafx.stage.Stage;
  */
 public class JavaApp extends Application {
 
-//    public static JDA api;
+    public static JDA api;
 
-    public static final int NORMAL_SHUTDOWN = 10;
-    public static final int RESTART_EXITCODE = 11;
-    public static final int NEWLY_CREATED_CONFIG = 12;
-
-    //Non error, action required exit codes.
-    public static final int UPDATE_LATEST_EXITCODE = 20;
-    public static final int UPDATE_RECOMMENDED_EXITCODE = 21;
-
-    //error exit codes.
-    public static final int UNABLE_TO_CONNECT_TO_DISCORD = 30;
-    public static final int BAD_USERNAME_PASS_COMBO = 31;
     public static final int NO_USERNAME_PASS_COMBO = 32;
 
     public static void main(String[] args) {
-//        setupBot();
+        setupBot();
         launch(args);
+    }
+
+    private static void setupBot() {
+
+        try {
+            Settings settings = SettingsManager.getInstance().getSettings();
+            JDABuilder jdaBuilder = new JDABuilder(AccountType.BOT).setToken(settings.getBotToken());
+            jdaBuilder.addEventListener(new EventListener());
+            api = jdaBuilder.build().awaitReady();
+        } catch (IllegalArgumentException e) {
+            System.out.println("No login details provided! Please provide a botToken in the config.");
+            System.exit(NO_USERNAME_PASS_COMBO);
+        } catch (LoginException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("\n" +
+                "---------------------------------\n" +
+                "Logged in as: " + api.getSelfUser().getName() + "#" + api.getSelfUser().getDiscriminator() + "\n" +
+                "UserID: " + api.getSelfUser().getId() + "\n" +
+                "---------------------------------\n\n"
+        );
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        System.out.println(getClass().getResource("/fxml/message.fxml"));
-        System.out.println(getClass().getClassLoader().getResource("/fxml/message.fxml"));
-//        System.out.println(getClass().getResourceAsStream("/images/DiscordLogo.png"));
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/message.fxml"));
         Scene scene = new Scene(root, 900, 650);
         primaryStage.setTitle("PaladinFX");
-//        primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/images/DiscordLogo.png")));
+        primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/images/DiscordLogo.png")));
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);
         primaryStage.show();
