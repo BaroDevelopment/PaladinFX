@@ -101,7 +101,7 @@
 /*TablPane styling*/
 .tab {
     -fx-background-color:derive(-fx-primary, -30%);
-    -fx-pref-width: 90px;
+    /*-fx-pref-width: 90px;*/
     -fx-pref-height: 30px;
     -fx-padding: 20px;
 }

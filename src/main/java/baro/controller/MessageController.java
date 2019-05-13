@@ -9,9 +9,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.paint.Color;
 import net.dv8tion.jda.core.EmbedBuilder;
-import net.dv8tion.jda.core.entities.Guild;
-import net.dv8tion.jda.core.entities.TextChannel;
-import net.dv8tion.jda.core.entities.User;
+import net.dv8tion.jda.core.entities.*;
+import net.dv8tion.jda.webhook.WebhookClient;
+import net.dv8tion.jda.webhook.WebhookClientBuilder;
+import net.dv8tion.jda.webhook.WebhookMessage;
+import net.dv8tion.jda.webhook.WebhookMessageBuilder;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -26,20 +28,16 @@ public class MessageController implements Initializable {
     @FXML
     TextField serverID, channelID, userID, authorName, authorAvatarUrl, title, titleUrl, footer, footerUrl, thumbnail,
             img, fieldName1, fieldName2, fieldName3, fieldName4, fieldName5, fieldName6, fieldName7,
-            fieldName8, fieldName9;
+            fieldName8, fieldName9, webhookName, webhookAvatar;
     @FXML
     TextArea msg, fieldValue1, fieldValue2, fieldValue3, fieldValue4, fieldValue5, fieldValue6, fieldValue7,
             fieldValue8, fieldValue9;
     @FXML
     Label messageStatus;
     @FXML
-    CheckBox embed, inline1, inline2, inline3, inline4, inline5, inline6, inline7, inline8, inline9;
+    CheckBox embed, webhook, inline1, inline2, inline3, inline4, inline5, inline6, inline7, inline8, inline9;
     @FXML
     ColorPicker colorPicker = new ColorPicker();
-
-    @FXML
-    ListView<String> dmHistory;
-    public static ObservableList<String> dmHistoryList;
 
     @FXML
     void sendMessage(ActionEvent e) {
@@ -131,9 +129,33 @@ public class MessageController implements Initializable {
                 eb.addField(fieldName9.getText(), fieldValue9.getText(), inline9.isSelected());
             }
         }
-        if (msg.getText().isEmpty()) {
+        if (msg.getText().isEmpty() && !embed.isSelected() && !webhook.isSelected()) {
             messageStatus.setStyle("-fx-text-fill: #ff5353");
             messageStatus.setText("message is empty");
+        } else if (webhook.isSelected() && validServer) {
+            try {
+                Guild guild = JavaApp.api.getGuildById(serverID.getText());
+                TextChannel textChannel = guild.getTextChannelById(channelID.getText());
+                Webhook webhook = textChannel.getWebhooks().complete().size() == 0 ?
+                        textChannel.createWebhook("PaladinFX").complete() :
+                        textChannel.getWebhooks().complete().get(0);
+                WebhookClientBuilder webhookClientBuilder = webhook.newClient();
+                WebhookClient client = webhookClientBuilder.build(); //remember to close this client when you are done
+
+                WebhookMessageBuilder builder = new WebhookMessageBuilder();
+                if (embed.isSelected())
+                    builder.addEmbeds(eb.build());
+                else
+                    builder.setContent(msg.getText());
+                builder.setUsername(webhookName.getText());
+                builder.setAvatarUrl(webhookAvatar.getText());
+                WebhookMessage message = builder.build();
+                client.send(message);
+                client.close();
+            }catch (Exception ex){
+                messageStatus.setStyle("-fx-text-fill: #ff5353");
+                messageStatus.setText("No Webhook found");
+            }
         } else if (validServer) {
             Guild guild = JavaApp.api.getGuildById(serverID.getText());
             TextChannel textChannel = guild.getTextChannelById(channelID.getText());
@@ -196,10 +218,22 @@ public class MessageController implements Initializable {
         return textChannel != null;
     }
 
+    boolean isValidWebhook() {
+        if (webhookName == null || webhookName.getText().isEmpty()) {
+            messageStatus.setStyle("-fx-text-fill: #ff5353");
+            messageStatus.setText("Invalid Webhook Name");
+            return false;
+        }
+        if (webhookAvatar == null || webhookAvatar.getText().isEmpty()) {
+            messageStatus.setStyle("-fx-text-fill: #ff5353");
+            messageStatus.setText("Invalid Webhook Avatar URL");
+            return false;
+        }
+        return true;
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        dmHistoryList = FXCollections.observableArrayList();
-        dmHistory.setItems(dmHistoryList);
         colorPicker.setValue(Color.CYAN);
     }
 }

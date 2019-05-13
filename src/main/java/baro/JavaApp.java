@@ -39,7 +39,6 @@ public class JavaApp extends Application {
         try {
             Settings settings = SettingsManager.getInstance().getSettings();
             JDABuilder jdaBuilder = new JDABuilder(AccountType.BOT).setToken(settings.getBotToken());
-            jdaBuilder.addEventListener(new EventListener());
             api = jdaBuilder.build().awaitReady();
         } catch (IllegalArgumentException e) {
             System.out.println("No login details provided! Please provide a botToken in the config.");
