@@ -9,6 +9,19 @@
     -fx-color-1: #1976D2;
 }
 
+.color-picker {
+    -fx-background-color: -fx-secondary;
+    -fx-background-radius: 0 15 15 0;
+}
+
+.color-picker .color-picker-label .text {
+    -fx-text-fill: -fx-primarytext;
+}
+
+.scroll-pane {
+    -fx-background-color: black;
+}
+
 .list-view {
     -fx-text-fill: -fx-primarytext;
     -fx-background-color: -fx-dark;
@@ -61,7 +74,8 @@
 }
 
 .text-field:focused{
-    -fx-border-color: derive(-fx-secondary, 10%);
+    -fx-border-width: 0 0 2 0;
+    -fx-border-color: -fx-secondary;
 }
 
 .text-area {
@@ -72,7 +86,8 @@
 }
 
 .text-area:focused{
-    -fx-background-color: -fx-secondary;
+    -fx-border-width: 1 1 1 1;
+    -fx-border-color: -fx-secondary;
 }
 
 .text-area .content{
@@ -83,14 +98,19 @@
     /*-fx-prompt-text-fill: -fx-secondary;*/
 }
 
-/*Main Screen CSS Styling starts here*/
-
 /*TablPane styling*/
 .tab {
-    -fx-background-color: -fx-primary;
-    -fx-pref-width: 250px;
-    -fx-pref-height: 50px;
-    -fx-font-size: 80px;
+    -fx-background-color:derive(-fx-primary, -30%);
+    -fx-pref-width: 90px;
+    -fx-pref-height: 30px;
+    -fx-padding: 20px;
+}
+
+.tab:selected {
+    -fx-background-radius: 0;
+    -fx-background-insets: 0;
+    -fx-border-width: 0 0 2 0;
+    -fx-border-color: -fx-secondary;
 }
 
 .tab-header-background {
@@ -98,10 +118,13 @@
 }
 
 .tab-label {
-    -fx-text-fill: -fx-secondary;
-    -fx-font-size: 10pt;
+    -fx-text-fill: -fx-primarytext;
+    -fx-font-size: 12pt;
 }
 
+.tab:selected .tab-label {
+     /*-fx-text-fill: -fx-secondary;*/
+ }
 
 .tab-main {
     -fx-pref-height: 60;
@@ -310,9 +333,18 @@
 
 /*Checkbox*/
 
-.checkbox-main {
-    -fx-text-fill: -fx-secondary;
-    -fx-font-size: 10pt;
+.check-box .box {
+    -fx-background-color: -fx-primary;
+    -fx-border-color: grey;
+    -fx-border-radius: 3px;
+}
+
+.check-box:selected .mark {
+    -fx-background-color: #fbfbfb;
+}
+
+.check-box:selected .box {
+    -fx-background-color: -fx-secondary;
 }
 
 /*Progrss bar*/
