@@ -35,7 +35,7 @@ public class MessageController implements Initializable {
     @FXML
     CheckBox embed, inline1, inline2, inline3, inline4, inline5, inline6, inline7, inline8, inline9;
     @FXML
-    ColorPicker color;
+    ColorPicker colorPicker = new ColorPicker();
 
     @FXML
     ListView<String> dmHistory;
@@ -43,7 +43,6 @@ public class MessageController implements Initializable {
 
     @FXML
     void sendMessage(ActionEvent e) {
-        System.out.println(color.getValue());
         boolean validServer = isValidServer();
         boolean validUser = isValidUser();
 
@@ -51,10 +50,12 @@ public class MessageController implements Initializable {
             return;
 
         EmbedBuilder eb = new EmbedBuilder();
+
         java.awt.Color embedColor = new java.awt.Color(
-                (int) color.getValue().getRed() * 255,
-                (int) color.getValue().getGreen() * 255,
-                (int) color.getValue().getBlue() * 255);
+                (float) colorPicker.getValue().getRed(),
+                (float) colorPicker.getValue().getGreen(),
+                (float) colorPicker.getValue().getBlue(),
+                (float) colorPicker.getValue().getOpacity());
 
         if (embed.isSelected()) {
             eb.setColor(embedColor);
@@ -199,6 +200,6 @@ public class MessageController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         dmHistoryList = FXCollections.observableArrayList();
         dmHistory.setItems(dmHistoryList);
-        color = new ColorPicker(Color.MAGENTA);
+        colorPicker.setValue(Color.CYAN);
     }
 }
