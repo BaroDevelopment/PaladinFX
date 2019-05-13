@@ -30,8 +30,8 @@ public class JavaApp extends Application {
     public static final int NO_USERNAME_PASS_COMBO = 32;
 
     public static void main(String[] args) {
-        setupBot();
         launch(args);
+        setupBot();
     }
 
     private static void setupBot() {
