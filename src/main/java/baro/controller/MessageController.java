@@ -1,6 +1,7 @@
 package baro.controller;
 
 import baro.JavaApp;
+import baro.util.Regional;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -35,7 +36,7 @@ public class MessageController implements Initializable {
     @FXML
     Label messageStatus;
     @FXML
-    CheckBox embed, webhook, inline1, inline2, inline3, inline4, inline5, inline6, inline7, inline8, inline9;
+    CheckBox embed, webhook, regional, inline1, inline2, inline3, inline4, inline5, inline6, inline7, inline8, inline9;
     @FXML
     ColorPicker colorPicker = new ColorPicker();
 
@@ -152,24 +153,29 @@ public class MessageController implements Initializable {
                 WebhookMessage message = builder.build();
                 client.send(message);
                 client.close();
-            }catch (Exception ex){
+            } catch (Exception ex) {
                 messageStatus.setStyle("-fx-text-fill: #ff5353");
                 messageStatus.setText("No Webhook found");
             }
         } else if (validServer) {
             Guild guild = JavaApp.api.getGuildById(serverID.getText());
             TextChannel textChannel = guild.getTextChannelById(channelID.getText());
-            String message = msg.getText();
             if (embed.isSelected())
                 textChannel.sendMessage(eb.build()).queue();
-            else
-                textChannel.sendMessage(message).queue();
+            else if (regional.isSelected()) {
+                Regional regional = new Regional();
+                textChannel.sendMessage(regional.toRegional(msg.getText())).queue();
+            } else
+                textChannel.sendMessage(msg.getText()).queue();
         } else if (validUser) {
             User user = JavaApp.api.getUserById(userID.getText());
             user.openPrivateChannel().queue(privateChannel -> {
                 if (embed.isSelected())
                     privateChannel.sendMessage(eb.build()).queue();
-                else
+                else if (regional.isSelected()) {
+                    Regional regional = new Regional();
+                    privateChannel.sendMessage(regional.toRegional(msg.getText())).queue();
+                } else
                     privateChannel.sendMessage(msg.getText()).queue();
             });
         }
@@ -230,6 +236,19 @@ public class MessageController implements Initializable {
             return false;
         }
         return true;
+    }
+
+    @FXML
+    private void disableEmbed(ActionEvent e) {
+        if (regional.isSelected()) {
+            embed.setDisable(true);
+            embed.setSelected(false);
+            webhook.setDisable(true);
+            webhook.setSelected(false);
+        } else {
+            embed.setDisable(false);
+            webhook.setDisable(false);
+        }
     }
 
     @Override

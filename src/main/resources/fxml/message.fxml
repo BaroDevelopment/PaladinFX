@@ -51,7 +51,7 @@
                               <Font size="14.0" />
                            </font>
                         </CheckBox>
-                        <ColorPicker fx:id="colorPicker" layoutX="522.0" layoutY="172.0" prefHeight="38.0" prefWidth="176.0" />
+                        <ColorPicker fx:id="colorPicker" layoutX="522.0" layoutY="172.0" prefHeight="38.0" prefWidth="130.0" />
                         <Label layoutX="71.0" layoutY="131.0" prefHeight="35.0" prefWidth="175.0" text="Webhook" textFill="#ababab">
                            <font>
                               <Font size="18.0" />
@@ -65,6 +65,16 @@
                            </font>
                         </CheckBox>
                         <Label layoutX="552.0" layoutY="131.0" prefHeight="35.0" prefWidth="69.0" text="Embed" textFill="#ababab">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <CheckBox fx:id="regional" layoutX="709.0" layoutY="132.0" mnemonicParsing="false" onAction="#disableEmbed" prefHeight="32.0" prefWidth="91.0" textFill="#ababab">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </CheckBox>
+                        <Label layoutX="739.0" layoutY="131.0" prefHeight="35.0" prefWidth="84.0" text="Regional" textFill="#ababab">
                            <font>
                               <Font size="18.0" />
                            </font>
