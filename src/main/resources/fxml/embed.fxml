@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" xmlns="http://javafx.com/javafx/10.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="baro.controller.EmbedContentController">
+    <children>
+        <Label layoutX="76.0" prefHeight="46.0" prefWidth="118.0" text="Author" textFill="#ababab">
+            <font>
+                <Font size="18.0"/>
+            </font>
+        </Label>
+        <TextField fx:id="authorName" layoutX="14.0" layoutY="43.0" promptText="Author Name"/>
+        <TextField fx:id="authorAvatarUrl" layoutX="14.0" layoutY="94.0" promptText="Author Avatar Url"/>
+        <Label layoutX="278.0" prefHeight="46.0" prefWidth="118.0" text="Title" textFill="#ababab">
+            <font>
+                <Font size="18.0"/>
+            </font>
+        </Label>
+        <TextField fx:id="title" layoutX="236.0" layoutY="43.0" promptText="Title"/>
+        <TextField fx:id="footer" layoutX="464.0" layoutY="43.0" promptText="Footer Text"/>
+        <Label layoutX="506.0" prefHeight="46.0" prefWidth="118.0" text="Footer" textFill="#ababab">
+            <font>
+                <Font size="18.0"/>
+            </font>
+        </Label>
+        <TextField fx:id="footerUrl" layoutX="464.0" layoutY="94.0" promptText="Footer Icon Url"/>
+        <Label layoutX="726.0" prefHeight="46.0" prefWidth="118.0" text="Images" textFill="#ababab">
+            <font>
+                <Font size="18.0"/>
+            </font>
+        </Label>
+        <TextField fx:id="thumbnail" layoutX="684.0" layoutY="43.0" promptText="Thumbnail URL"/>
+        <TextField fx:id="img" layoutX="684.0" layoutY="94.0" promptText="Image URL"/>
+        <TabPane layoutX="5.0" layoutY="157.0" prefHeight="377.0" prefWidth="900.0" tabClosingPolicy="UNAVAILABLE">
+            <tabs>
+                <Tab text="Field 1">
+                    <content>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                            <children>
+                                <CheckBox fx:id="inline1" layoutX="803.0" layoutY="36.0" mnemonicParsing="false"
+                                          prefHeight="34.0" prefWidth="71.0" text="Inline" textFill="#ababab">
+                                    <font>
+                                        <Font size="14.0"/>
+                                    </font>
+                                </CheckBox>
+                                <TextArea fx:id="fieldValue1" layoutX="13.0" layoutY="103.0" prefHeight="207.0"
+                                          prefWidth="871.0" promptText="Value"/>
+                                <TextField fx:id="fieldName1" layoutX="14.0" layoutY="33.0" prefHeight="39.0"
+                                           prefWidth="756.0" promptText="Title Name"/>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="Field 2">
+                    <content>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                            <children>
+                                <CheckBox fx:id="inline2" layoutX="803.0" layoutY="36.0" mnemonicParsing="false"
+                                          prefHeight="34.0" prefWidth="71.0" text="Inline" textFill="#ababab">
+                                    <font>
+                                        <Font size="14.0"/>
+                                    </font>
+                                </CheckBox>
+                                <TextArea fx:id="fieldValue2" layoutX="13.0" layoutY="103.0" prefHeight="207.0"
+                                          prefWidth="871.0" promptText="Value"/>
+                                <TextField fx:id="fieldName2" layoutX="14.0" layoutY="33.0" prefHeight="39.0"
+                                           prefWidth="756.0" promptText="Title Name"/>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="Field 3">
+                    <content>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                            <children>
+                                <CheckBox fx:id="inline3" layoutX="803.0" layoutY="36.0" mnemonicParsing="false"
+                                          prefHeight="34.0" prefWidth="71.0" text="Inline" textFill="#ababab">
+                                    <font>
+                                        <Font size="14.0"/>
+                                    </font>
+                                </CheckBox>
+                                <TextArea fx:id="fieldValue3" layoutX="13.0" layoutY="103.0" prefHeight="207.0"
+                                          prefWidth="871.0" promptText="Value"/>
+                                <TextField fx:id="fieldName3" layoutX="14.0" layoutY="33.0" prefHeight="39.0"
+                                           prefWidth="756.0" promptText="Title Name"/>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="Field 4">
+                    <content>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                            <children>
+                                <CheckBox fx:id="inline4" layoutX="803.0" layoutY="36.0" mnemonicParsing="false"
+                                          prefHeight="34.0" prefWidth="71.0" text="Inline" textFill="#ababab">
+                                    <font>
+                                        <Font size="14.0"/>
+                                    </font>
+                                </CheckBox>
+                                <TextArea fx:id="fieldValue4" layoutX="13.0" layoutY="103.0" prefHeight="207.0"
+                                          prefWidth="871.0" promptText="Value"/>
+                                <TextField fx:id="fieldName4" layoutX="14.0" layoutY="33.0" prefHeight="39.0"
+                                           prefWidth="756.0" promptText="Title Name"/>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="Field 5">
+                    <content>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                            <children>
+                                <CheckBox fx:id="inline5" layoutX="803.0" layoutY="36.0" mnemonicParsing="false"
+                                          prefHeight="34.0" prefWidth="71.0" text="Inline" textFill="#ababab">
+                                    <font>
+                                        <Font size="14.0"/>
+                                    </font>
+                                </CheckBox>
+                                <TextArea fx:id="fieldValue5" layoutX="13.0" layoutY="103.0" prefHeight="207.0"
+                                          prefWidth="871.0" promptText="Value"/>
+                                <TextField fx:id="fieldName5" layoutX="14.0" layoutY="33.0" prefHeight="39.0"
+                                           prefWidth="756.0" promptText="Title Name"/>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="Field 6">
+                    <content>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                            <children>
+                                <CheckBox fx:id="inline6" layoutX="803.0" layoutY="36.0" mnemonicParsing="false"
+                                          prefHeight="34.0" prefWidth="71.0" text="Inline" textFill="#ababab">
+                                    <font>
+                                        <Font size="14.0"/>
+                                    </font>
+                                </CheckBox>
+                                <TextArea fx:id="fieldValue6" layoutX="13.0" layoutY="103.0" prefHeight="207.0"
+                                          prefWidth="871.0" promptText="Value"/>
+                                <TextField fx:id="fieldName6" layoutX="14.0" layoutY="33.0" prefHeight="39.0"
+                                           prefWidth="756.0" promptText="Title Name"/>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="Field 7">
+                    <content>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                            <children>
+                                <CheckBox fx:id="inline7" layoutX="803.0" layoutY="36.0" mnemonicParsing="false"
+                                          prefHeight="34.0" prefWidth="71.0" text="Inline" textFill="#ababab">
+                                    <font>
+                                        <Font size="14.0"/>
+                                    </font>
+                                </CheckBox>
+                                <TextArea fx:id="fieldValue7" layoutX="13.0" layoutY="103.0" prefHeight="207.0"
+                                          prefWidth="871.0" promptText="Value"/>
+                                <TextField fx:id="fieldName7" layoutX="14.0" layoutY="33.0" prefHeight="39.0"
+                                           prefWidth="756.0" promptText="Title Name"/>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="Field 8">
+                    <content>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                            <children>
+                                <CheckBox fx:id="inline8" layoutX="803.0" layoutY="36.0" mnemonicParsing="false"
+                                          prefHeight="34.0" prefWidth="71.0" text="Inline" textFill="#ababab">
+                                    <font>
+                                        <Font size="14.0"/>
+                                    </font>
+                                </CheckBox>
+                                <TextArea fx:id="fieldValue8" layoutX="13.0" layoutY="103.0" prefHeight="207.0"
+                                          prefWidth="871.0" promptText="Value"/>
+                                <TextField fx:id="fieldName8" layoutX="14.0" layoutY="33.0" prefHeight="39.0"
+                                           prefWidth="756.0" promptText="Title Name"/>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="Field 9">
+                    <content>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                            <children>
+                                <CheckBox fx:id="inline9" layoutX="803.0" layoutY="36.0" mnemonicParsing="false"
+                                          prefHeight="34.0" prefWidth="71.0" text="Inline" textFill="#ababab">
+                                    <font>
+                                        <Font size="14.0"/>
+                                    </font>
+                                </CheckBox>
+                                <TextArea fx:id="fieldValue9" layoutX="13.0" layoutY="103.0" prefHeight="207.0"
+                                          prefWidth="871.0" promptText="Value"/>
+                                <TextField fx:id="fieldName9" layoutX="14.0" layoutY="33.0" prefHeight="39.0"
+                                           prefWidth="756.0" promptText="Title Name"/>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+        <TextField fx:id="titleUrl" layoutX="236.0" layoutY="94.0" promptText="Title URL"/>
+    </children>
+</AnchorPane>
