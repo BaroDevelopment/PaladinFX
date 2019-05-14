@@ -39,9 +39,6 @@ public class MessageController implements Initializable {
     ColorPicker colorPicker = new ColorPicker();
 
     @FXML
-    Tab embedTab;
-
-    @FXML
     private EmbedContentController embedController;
 
     @FXML
@@ -226,20 +223,6 @@ public class MessageController implements Initializable {
         messageStatus.setStyle("-fx-text-fill: #38ff87");
         messageStatus.setText("message sent");
         return textChannel != null;
-    }
-
-    boolean isValidWebhook() {
-        if (webhookName == null || webhookName.getText().isEmpty()) {
-            messageStatus.setStyle("-fx-text-fill: #ff5353");
-            messageStatus.setText("Invalid Webhook Name");
-            return false;
-        }
-        if (webhookAvatar == null || webhookAvatar.getText().isEmpty()) {
-            messageStatus.setStyle("-fx-text-fill: #ff5353");
-            messageStatus.setText("Invalid Webhook Avatar URL");
-            return false;
-        }
-        return true;
     }
 
     @FXML

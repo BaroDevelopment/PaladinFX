@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="baro.controller.GuildInfoController">
+  <children>
+    <TableView fx:id="guildInfoView" prefHeight="600.0" prefWidth="900.0">
+      <columns>
+        <TableColumn fx:id="guildName" prefWidth="229.0" text="name" />
+        <TableColumn fx:id="guildID" prefWidth="221.0" text="id" />
+        <TableColumn fx:id="guildOwner" minWidth="0.0" prefWidth="199.0" text="owner" />
+        <TableColumn fx:id="guildBotsCount" minWidth="0.0" prefWidth="87.0" text="bots" />
+        <TableColumn fx:id="guildTotalMembers" prefWidth="77.0" text="total" />
+      </columns>
+    </TableView>
+  </children>
+</AnchorPane>

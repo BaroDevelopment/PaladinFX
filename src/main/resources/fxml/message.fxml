@@ -88,6 +88,11 @@
                  <fx:include fx:id="embed" source="embed.fxml" />
               </content>
            </Tab>
+            <Tab fx:id="guildInfoTab" text="Info">
+                <content>
+                    <fx:include fx:id="guildinfo" source="guildinfo.fxml" />
+                </content>
+            </Tab>
         </tabs>
       </TabPane>
    </center>
