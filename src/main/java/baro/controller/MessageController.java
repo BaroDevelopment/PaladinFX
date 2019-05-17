@@ -1,6 +1,7 @@
 package baro.controller;
 
 import baro.JavaApp;
+import baro.dialogs.PAlert;
 import baro.util.Regional;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -32,11 +33,13 @@ public class MessageController implements Initializable {
     @FXML
     TextArea msg;
     @FXML
-    Label messageStatus;
-    @FXML
     CheckBox embedEnabled, webhook, regional;
     @FXML
     ColorPicker colorPicker = new ColorPicker();
+
+    PAlert pAlert = new PAlert(Alert.AlertType.INFORMATION);
+
+    Alert alert = pAlert.getInstance();
 
     @FXML
     private EmbedContentController embedController;
@@ -132,8 +135,8 @@ public class MessageController implements Initializable {
             }
         }
         if (msg.getText().isEmpty() && !embedEnabled.isSelected() && !webhook.isSelected()) {
-            messageStatus.setStyle("-fx-text-fill: #ff5353");
-            messageStatus.setText("message is empty");
+            alert.setContentText("Message is empty");
+            alert.showAndWait();
         } else if (webhook.isSelected() && validServer) {
             try {
                 Guild guild = JavaApp.api.getGuildById(serverID.getText());
@@ -155,8 +158,8 @@ public class MessageController implements Initializable {
                 client.send(message);
                 client.close();
             } catch (Exception ex) {
-                messageStatus.setStyle("-fx-text-fill: #ff5353");
-                messageStatus.setText("No Webhook found");
+                alert.setContentText("No Webhook found");
+                alert.showAndWait();
             }
         } else if (validServer) {
             Guild guild = JavaApp.api.getGuildById(serverID.getText());
@@ -187,12 +190,12 @@ public class MessageController implements Initializable {
         try {
             user = JavaApp.api.getUserById(userID.getText());
             if (user == null) {
-                messageStatus.setStyle("-fx-text-fill: #ff5353");
-                messageStatus.setText("Invalid User ID");
+                alert.setContentText("Invalid User ID");
+                alert.showAndWait();
                 return false;
             } else {
-                messageStatus.setStyle("-fx-text-fill: #38ff87");
-                messageStatus.setText("message sent");
+                alert.setContentText("message sent");
+                alert.showAndWait();
                 return true;
             }
         } catch (Exception ex) {
@@ -203,25 +206,30 @@ public class MessageController implements Initializable {
     boolean isValidServer() {
         Guild guild;
         TextChannel textChannel;
-        messageStatus.setStyle("-fx-text-fill: #ff5353");
         try {
             guild = JavaApp.api.getGuildById(serverID.getText());
-            if (guild == null)
-                messageStatus.setText("Invalid Server ID");
+            if (guild == null){
+                alert.setContentText("Invalid Server ID");
+                alert.showAndWait();
+            }
         } catch (Exception ex) {
-            messageStatus.setText("Invalid Server ID");
+            alert.setContentText("Invalid Server ID");
+            alert.showAndWait();
             return false;
         }
         try {
             textChannel = guild.getTextChannelById(channelID.getText());
-            if (textChannel == null)
-                messageStatus.setText("Invalid Channel ID");
+            if (textChannel == null){
+                alert.setContentText("Invalid Channel ID");
+                alert.showAndWait();
+            }
         } catch (Exception ex) {
-            messageStatus.setText("Invalid Channel ID");
+            alert.setContentText("Invalid Channel ID");
+            alert.showAndWait();
             return false;
         }
-        messageStatus.setStyle("-fx-text-fill: #38ff87");
-        messageStatus.setText("message sent");
+        alert.setContentText("Message sent");
+        alert.showAndWait();
         return textChannel != null;
     }
 
@@ -241,5 +249,7 @@ public class MessageController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         colorPicker.setValue(Color.CYAN);
+        alert.setHeaderText(null);
+        alert.setGraphic(null);
     }
 }
