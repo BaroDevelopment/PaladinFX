@@ -1,14 +1,17 @@
 # PaladinFX
-A JavaFX, Kotlin GUI for Discord Bots
+A JavaFX, Kotlin GUI for Discord Bots.
 
-#### Gradle Version
-4.10.3
-<br/>
+## Resources
+- [JavaFX Settings and Docs](https://openjfx.io/openjfx-docs/)
 
-![Gradle Version](https://media.discordapp.net/attachments/574702492399435962/574702564910825482/unknown.png)
+## Features
+- Send messages to a server
+- Send messages to a user
+- Send messages using embeds
+- Send messages using webhooks
+- Info overview about all servers your bot is in
+- Leave a server using the id
+- Download all emotes from all server
 
-### IntelliJ Settings
-![Options](https://cdn.discordapp.com/attachments/574702492399435962/574712685980155915/unknown.png)
-#### Resources
-[JavaFX Settings and Docs](https://openjfx.io/openjfx-docs/)
-
+# Preview
+![Preview](https://cdn.discordapp.com/attachments/396964573007052800/578886572456411154/PaladinFX.gif)
