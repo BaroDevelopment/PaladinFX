@@ -1,6 +1,9 @@
 # PaladinFX
 A JavaFX, Kotlin GUI for Discord Bots.
 
+# Requirements
+- Java Development Kit (JDK) 11
+
 ## Resources
 - [JavaFX Settings and Docs](https://openjfx.io/openjfx-docs/)
 
