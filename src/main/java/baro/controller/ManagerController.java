@@ -10,10 +10,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import net.dv8tion.jda.core.entities.Emote;
 import net.dv8tion.jda.core.entities.Guild;
+import net.dv8tion.jda.core.entities.Invite;
 import org.apache.commons.io.FilenameUtils;
 
 import java.io.*;
 import java.net.URL;
+import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -31,6 +33,12 @@ public class ManagerController implements Initializable {
 
     @FXML
     Button emoteDownloadButton;
+
+    @FXML
+    Button inviteButton;
+
+    @FXML
+    TextField inviteCode;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -60,6 +68,49 @@ public class ManagerController implements Initializable {
             } catch (Exception ex) {
                 alert.setContentText("Failed to leave the server.");
             } finally {
+                alert.showAndWait();
+            }
+        });
+    }
+
+    @FXML
+    private void getInviteLink(ActionEvent e) {
+        PTextInputDialog pTextInputDialog = new PTextInputDialog();
+        TextInputDialog dialog = pTextInputDialog.getInstance();
+        dialog.setTitle("Invite Link");
+        dialog.setHeaderText(null);
+        dialog.setGraphic(null);
+        dialog.setContentText("Please enter the server id:");
+        PAlert paladinAlert = new PAlert(Alert.AlertType.INFORMATION);
+        Alert alert = paladinAlert.getInstance();
+        alert.setTitle("Invite Link");
+        alert.setGraphic(null);
+        alert.setHeaderText(null);
+        Optional<String> result = dialog.showAndWait();
+        result.ifPresent(serverID -> {
+            Guild guild = null;
+            try {
+                guild = JavaApp.api.getGuildById(serverID);
+                if (guild == null) {
+                    alert.setContentText("Server not found!");
+                    alert.showAndWait();
+                } else {
+                    try {
+                        List<Invite> invites = guild.getInvites().complete();
+                        if (invites.isEmpty()){
+                            alert.setContentText("No invites found");
+                            alert.showAndWait();
+                        }else {
+                            inviteCode.setText(invites.get(0).getURL());
+                            inviteCode.setVisible(true);
+                        }
+                    }catch (Exception ex){
+                        alert.setContentText("No invite links found!");
+                        alert.showAndWait();
+                    }
+                }
+            }catch (Exception exe){
+                alert.setContentText("Server not found!");
                 alert.showAndWait();
             }
         });

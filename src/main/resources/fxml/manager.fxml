@@ -2,12 +2,15 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" stylesheets="@../css/dark-theme.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="baro.controller.ManagerController">
    <children>
-      <Button fx:id="leaveServerButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#leaveServer" prefHeight="27.0" prefWidth="202.0" text="Leave Server" />
-      <Button fx:id="emoteDownloadButton" layoutX="239.0" layoutY="14.0" mnemonicParsing="false" onAction="#downloadEmotes" prefHeight="27.0" prefWidth="202.0" text="Download Emotes" />
+      <Button fx:id="leaveServerButton" layoutX="14.0" layoutY="79.0" mnemonicParsing="false" onAction="#leaveServer" prefHeight="39.0" prefWidth="202.0" text="Leave Server" />
+      <Button fx:id="emoteDownloadButton" layoutX="14.0" layoutY="139.0" mnemonicParsing="false" onAction="#downloadEmotes" prefHeight="39.0" prefWidth="202.0" text="Download Emotes" />
       <ProgressBar fx:id="emoteDownloadProgressBar" layoutX="239.0" layoutY="41.0" prefHeight="27.0" prefWidth="202.0" progress="0.0" visible="false" />
+      <Button fx:id="inviteButton" layoutX="14.0" layoutY="22.0" mnemonicParsing="false" onAction="#getInviteLink" prefHeight="39.0" prefWidth="202.0" text="Get Invite Link" />
+      <TextField fx:id="inviteCode" layoutX="239.0" layoutY="22.0" prefHeight="17.0" prefWidth="645.0" visible="false" />
    </children>
 </AnchorPane>
