@@ -49,9 +49,6 @@ public class MessageController implements Initializable {
         boolean validServer = isValidServer();
         boolean validUser = isValidUser();
 
-        if (isValidServer() && isValidUser())
-            return;
-
         EmbedBuilder eb = new EmbedBuilder();
 
         java.awt.Color embedColor = new java.awt.Color(
@@ -171,7 +168,8 @@ public class MessageController implements Initializable {
                 textChannel.sendMessage(regional.toRegional(msg.getText())).queue();
             } else
                 textChannel.sendMessage(msg.getText()).queue();
-        } else if (validUser) {
+        }
+        if (validUser) {
             User user = JavaApp.api.getUserById(userID.getText());
             user.openPrivateChannel().queue(privateChannel -> {
                 if (embedEnabled.isSelected())
@@ -194,8 +192,8 @@ public class MessageController implements Initializable {
                 alert.showAndWait();
                 return false;
             } else {
-                alert.setContentText("message sent");
-                alert.showAndWait();
+//                alert.setContentText("message sent");
+//                alert.showAndWait();
                 return true;
             }
         } catch (Exception ex) {
@@ -208,9 +206,9 @@ public class MessageController implements Initializable {
         TextChannel textChannel;
         try {
             guild = JavaApp.api.getGuildById(serverID.getText());
-            if (guild == null){
-                alert.setContentText("Invalid Server ID");
-                alert.showAndWait();
+            if (guild == null) {
+//                alert.setContentText("Invalid Server ID");
+//                alert.showAndWait();
             }
         } catch (Exception ex) {
             alert.setContentText("Invalid Server ID");
@@ -219,7 +217,7 @@ public class MessageController implements Initializable {
         }
         try {
             textChannel = guild.getTextChannelById(channelID.getText());
-            if (textChannel == null){
+            if (textChannel == null) {
                 alert.setContentText("Invalid Channel ID");
                 alert.showAndWait();
             }
@@ -228,8 +226,8 @@ public class MessageController implements Initializable {
             alert.showAndWait();
             return false;
         }
-        alert.setContentText("Message sent");
-        alert.showAndWait();
+//        alert.setContentText("Message sent");
+//        alert.showAndWait();
         return textChannel != null;
     }
 

@@ -12,8 +12,18 @@ import javafx.stage.Stage;
 import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.JDABuilder;
+import net.dv8tion.jda.core.Permission;
+import net.dv8tion.jda.core.entities.*;
+import org.apache.commons.io.FilenameUtils;
 
 import javax.security.auth.login.LoginException;
+import java.io.*;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Comparator;
+import java.util.stream.Stream;
 
 
 /**
@@ -27,10 +37,42 @@ public class JavaApp extends Application {
 
     public static final int NO_USERNAME_PASS_COMBO = 32;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         setupBot();
         launch(args);
+
+//        Guild guild = api.getGuildById("485901002931699726");
+//        for (TextChannel c : guild.getTextChannels()) {
+//            BufferedWriter output;
+//            File file = new File("messages/" + c.getName() + ".txt");
+//            output = new BufferedWriter(new FileWriter(file));
+//            c.getIterableHistory().takeAsync(1000).join().forEach(message -> {
+//                String time = "[" + message.getCreationTime().getHour() + ":" + message.getCreationTime().getMinute() + ":" + message.getCreationTime().getSecond() + "]";
+//                try {
+//                    if (message.getEmbeds().isEmpty()) {
+//                        output.write(time + " " + message.getAuthor().getName() + ":\t\t\t" + message.getContentDisplay());
+//                    } else {
+//                        output.write(time + " " + message.getAuthor().getName() + ":\t\t\t Embed Message - ChannelID: " + c.getId() + "  - Msg ID: " + message.getId());
+//                    }
+//                    if (!message.getAttachments().isEmpty() && message.getAttachments().get(0).isImage()) {
+//                        output.write(time + " " + message.getAuthor().getName() + ":\t\t\t[Attachmant] " + message.getAttachments().get(0).getUrl());
+//                    }
+//                    output.write("\n\n");
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+//            });
+//            output.close();
+//        }
+
+//        TextChannel ektos = api.getTextChannelById("588883689253896192");
+//        try (Stream<String> stream = Files.lines(Paths.get("ektos.txt"))) {
+//            stream.forEach(s -> {
+//                ektos.sendMessage(s).queue();
+//            });
+//        }
     }
+
 
     private static void setupBot() {
 
